@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 便利な関数を管理する静的クラス
+
 public static class Utils
 {
-    // 移動可能な範囲
     public static Vector2 m_moveLimit = new Vector2(70 ,40);
 
     // 指定された位置を移動可能な範囲に収めた値を返す
@@ -18,6 +17,7 @@ public static class Utils
             0
         );
     }
+
     // 指定された 2 つの位置から角度を求めて返す
     public static float GetAngle(Vector2 from, Vector2 to)
     {
@@ -25,5 +25,16 @@ public static class Utils
         var dy = to.y - from.y;
         var rad = Mathf.Atan2(dy, dx);
         return rad * Mathf.Rad2Deg;
+    }
+
+    // 指定された角度（ 0 ～ 360 ）をベクトルに変換して返す
+    public static Vector3 GetDirection(float angle)
+    {
+        return new Vector3
+        (
+            Mathf.Cos(angle * Mathf.Deg2Rad),
+            Mathf.Sin(angle * Mathf.Deg2Rad),
+            0
+        );
     }
 }
