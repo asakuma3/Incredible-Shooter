@@ -39,7 +39,9 @@ public class Player : MonoBehaviour
         transform.localEulerAngles = angles;
 
         m_shotTimer += Time.deltaTime;
+
         if (m_shotTimer < m_shotInterval) return;
+
         m_shotTimer = 0;
         ShotNWay(angle, m_shotAngleRange, m_shotSpeed, m_shotCount);
     }
