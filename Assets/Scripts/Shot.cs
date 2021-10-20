@@ -2,26 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shot : MonoBehaviour
+namespace Asakuma
 {
-    private Vector3 m_velocity;
-
-    private void Update()
+    public class Shot : MonoBehaviour
     {
-        transform.localPosition += m_velocity;
-    }
+        private Vector3 m_velocity;
 
-    public void Init(float angle, float speed)
-    {
-        var direction = Utils.GetDirection(angle);
+        private void Update()
+        {
+            transform.localPosition += m_velocity;
+        }
 
-        m_velocity = direction * speed;
+        public void Init(float angle, float speed)
+        {
+            var direction = Utils.GetDirection(angle);
 
-        // 弾が進行方向を向くようにする
-        var angles = transform.localEulerAngles;
-        angles.z = angle - 90;
-        transform.localEulerAngles = angles;
+            m_velocity = direction * speed;
 
-        Destroy(gameObject, 2);
+            // 弾が進行方向を向くようにする
+            var angles = transform.localEulerAngles;
+            angles.z = angle - 90;
+            transform.localEulerAngles = angles;
+
+            Destroy(gameObject, 2);
+        }
     }
 }
