@@ -18,6 +18,9 @@ namespace Asakuma
         public int m_hpMax;
         public int m_hp;
 
+        public GameObject explodePrefab; //爆発オブジェクト
+
+        
         private void Awake()
         {
             m_hp = m_hpMax;
@@ -81,6 +84,15 @@ namespace Asakuma
             m_hp -= damage;
             if (0 < m_hp) return;
             gameObject.SetActive(false);
+        }
+
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.gameObject.tag =="Enemy")
+            {
+                Instantiate(explodePrefab, transform.position,Quaternion.identity);
+                Destroy(gameObject);
+            }
         }
     }
 }
