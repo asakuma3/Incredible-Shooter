@@ -16,6 +16,7 @@ namespace Asakuma
 
     public class Enemy : MonoBehaviour
     {
+
         public Vector2 m_respownPosInside;  //敵の内側の出現位置
         public Vector2 m_respownPosOutside; //敵の外側の出現位置
         public float m_speed;
@@ -25,7 +26,7 @@ namespace Asakuma
 
         private int m_hp;
         private Vector3 m_direction;    //進行方向
-
+        public Explosion m_explosionPrefab;   //敵の爆発エフェクト
 
         private void Start()
         {
@@ -70,23 +71,25 @@ namespace Asakuma
         }
 
         //弾に衝突したとき呼び出す
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D col)
         {
-            if (collision.name.Contains("Player"))
+            if (col.gameObject.tag == "PLayer")
             {
-                var player = collision.GetComponent<Player>();
+                var player = col.GetComponent<Player>();
                 player.Damage(m_damage);
                 return;
             }
 
-            if (collision.name.Contains("Shot"))
+            if (col.gameObject.tag == "Shot")
             {
-                Destroy(collision.gameObject);
+                Debug.Log("爆発");
+                Instantiate(m_explosionPrefab, col.transform.localPosition, Quaternion.identity);
                 m_hp--;
                 if (0 < m_hp) return;
 
                 Destroy(gameObject);
             }
+
         }
     }
 }

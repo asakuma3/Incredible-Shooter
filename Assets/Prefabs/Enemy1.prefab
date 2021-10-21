@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 1625202495451026924}
   m_Layer: 0
   m_Name: Enemy1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -523,6 +523,7 @@ MonoBehaviour:
   m_hpMax: 3
   m_exp: 20
   m_damage: 10
+  m_explosionPrefab: {fileID: -7689676058199408806, guid: 77f23fcddacee8545b6693831bb86464, type: 3}
 --- !u!50 &1153744820612437774
 Rigidbody2D:
   serializedVersion: 4
