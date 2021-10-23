@@ -16,6 +16,9 @@ namespace Asakuma
 
     public class Enemy : MonoBehaviour
     {
+        public Explosion m_explosionPrefab;   //敵の爆発エフェクト
+        private float m_explosionTimer = 0f;    //連続爆発しないためのタイマー
+        private float m_setTimer = 0.05f;    //爆発タイマーの基準値
 
         public Vector2 m_respownPosInside;  //敵の内側の出現位置
         public Vector2 m_respownPosOutside; //敵の外側の出現位置
@@ -26,7 +29,8 @@ namespace Asakuma
 
         private int m_hp;
         private Vector3 m_direction;    //進行方向
-        public Explosion m_explosionPrefab;   //敵の爆発エフェクト
+
+        public bool m_isFollow; //追尾する場合true
 
         private void Start()
         {
@@ -34,6 +38,21 @@ namespace Asakuma
         }
         private void Update()
         {
+            m_explosionTimer -= Time.deltaTime;
+            Debug.Log(m_explosionTimer);
+
+            if (m_isFollow)
+            {
+                var angle = Utils.GetAngle(transform.localPosition, Player.m_playerInstance.transform.localPosition);
+                var direction = Utils.GetDirection(angle);
+
+                transform.localPosition += direction * m_speed; //プレイヤーがいる方向に移動
+                var angles = transform.localEulerAngles;    //プレイヤーがいる方向を向く
+                angles.z = angle - 90;
+                transform.localEulerAngles = angles;
+                return;
+            }
+
             transform.localPosition += m_direction * m_speed;
         }
 
@@ -82,8 +101,11 @@ namespace Asakuma
 
             if (col.gameObject.tag == "Shot")
             {
-                Debug.Log("爆発");
-                Instantiate(m_explosionPrefab, col.transform.localPosition, Quaternion.identity);
+                if (m_explosionTimer < 0)
+                {
+                    Instantiate(m_explosionPrefab, col.transform.localPosition, Quaternion.identity);
+                    m_explosionTimer = m_setTimer;
+                }
                 m_hp--;
                 if (0 < m_hp) return;
 

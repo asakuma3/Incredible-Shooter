@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 1153744820612437774}
   - component: {fileID: 1625202495451026924}
   m_Layer: 0
-  m_Name: Enemy1
+  m_Name: Enemy01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -498,7 +498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5258695252192714869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.9, y: 22.9, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4806112822646070014}
@@ -517,13 +517,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c9e6bab96303544aa12f6f3c8cf135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_explosionPrefab: {fileID: -7877412462838464298, guid: 541a1766e02310a4fa22f65df3649ac2, type: 3}
   m_respownPosInside: {x: 136.5, y: 120.25}
   m_respownPosOutside: {x: 24.8, y: 22}
-  m_speed: 0.15
-  m_hpMax: 3
-  m_exp: 20
+  m_speed: 0.05
+  m_hpMax: 2
+  m_exp: 5
   m_damage: 10
-  m_explosionPrefab: {fileID: -7689676058199408806, guid: 77f23fcddacee8545b6693831bb86464, type: 3}
+  m_isFollow: 0
 --- !u!50 &1153744820612437774
 Rigidbody2D:
   serializedVersion: 4
