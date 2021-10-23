@@ -7,8 +7,11 @@ namespace Asakuma
 {
     public class Player : MonoBehaviour
     {
-        public float m_speed;   //プレイヤーの移動スピード
         public Shot m_shotPrefab;
+        public GameObject explodePrefab; //爆発オブジェクト
+        public static Player m_playerInstance;
+
+        public float m_speed;   //プレイヤーの移動スピード
         public float m_shotSpeed;
         public float m_shotAngleRange;  //ショットの角度幅
         public float m_shotTimer;   //弾の発射タイミングを管理
@@ -18,12 +21,13 @@ namespace Asakuma
         public int m_hpMax;
         public int m_hp;
 
-        public GameObject explodePrefab; //爆発オブジェクト
 
         
         private void Awake()
         {
             m_hp = m_hpMax;
+            //他のクラスからプレイヤーを参照できるようにstatic変数にインスタンス情報を格納する
+            m_playerInstance = this; 
         }
 
         private void Update()
