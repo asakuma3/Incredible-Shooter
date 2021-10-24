@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace Asakuma
 {
@@ -16,10 +17,6 @@ namespace Asakuma
 
     public class Enemy : MonoBehaviour
     {
-        public Explosion m_explosionPrefab;   //敵の爆発エフェクト
-        private float m_explosionTimer = 0f;    //連続爆発しないためのタイマー
-        private float m_setTimer = 0.05f;    //爆発タイマーの基準値
-
         public Vector2 m_respownPosInside;  //敵の内側の出現位置
         public Vector2 m_respownPosOutside; //敵の外側の出現位置
         public float m_speed;
@@ -29,8 +26,15 @@ namespace Asakuma
 
         private int m_hp;
         private Vector3 m_direction;    //進行方向
-
         public bool m_isFollow; //追尾する場合true
+
+        public Explosion m_explosionPrefab;   //敵の爆発エフェクト
+        private float m_explosionTimer = 0f;    //連続爆発しないためのタイマー
+        private float m_setTimer = 0.05f;    //爆発タイマーの基準値
+
+        public Gem[] m_gemPrefabs;
+        private float m_gemSpeedMin;
+        private float m_gemSpeedMax;
 
         private void Start()
         {
@@ -110,6 +114,16 @@ namespace Asakuma
                 if (0 < m_hp) return;
 
                 Destroy(gameObject);
+
+                var exp = m_exp;
+                while (0 < exp)
+                {
+                    var gemPrefabs = m_gemPrefabs.Where(c => c.m_exp <= exp).ToArray();
+                    var gemPrefab = gemPrefabs[Random.Range(0, gemPrefabs.Length)];
+                    var gem = Instantiate(gemPrefab, transform.localPosition, Quaternion.identity);
+                    gem.Init(m_exp, m_gemSpeedMin, m_gemSpeedMax);
+                    exp -= gem.m_exp;
+                }
             }
 
         }
