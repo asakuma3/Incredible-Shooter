@@ -10,10 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3608490451441104796}
   - component: {fileID: 8728988858852225731}
-  - component: {fileID: 2139427225245290496}
   - component: {fileID: 4109691379721204817}
-  - component: {fileID: 7546809050002156121}
-  - component: {fileID: 8850803690685947178}
   m_Layer: 0
   m_Name: Bullet_4
   m_TagString: Untagged
@@ -86,23 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2139427225245290496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33070770682090901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a6fea4d4624e34f932d5aa882e9477, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolLimit: 50
-  isIndependentOfWeaponRotation: 0
-  damage: 5
-  lifetime: 0
-  speed: 10
 --- !u!50 &4109691379721204817
 Rigidbody2D:
   serializedVersion: 4
@@ -124,42 +104,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &7546809050002156121
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33070770682090901}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.15}
-  serializedVersion: 2
-  m_Radius: 0.57
---- !u!114 &8850803690685947178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33070770682090901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb4216b856ddc443a39f44b7a6cf5af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fxGo: {fileID: 2802392030836255703, guid: 21c10e54e685f6b47b564c853ed1de06, type: 3}
-  modifyScale: {x: 3, y: 3, z: 3}
-  offsetPosition: {x: 0, y: 0, z: 0}
-  newRotation: {x: 0, y: 0, z: 0}
-  previewFXsHierarchy: {fileID: 0}
-  hitSFX:
-    ac: {fileID: 0}
-    volume: 1
 --- !u!1 &3093611288307179842
 GameObject:
   m_ObjectHideFlags: 0

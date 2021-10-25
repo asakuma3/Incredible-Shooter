@@ -46,14 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c9e6bab96303544aa12f6f3c8cf135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_explosionPrefab: {fileID: -7877412462838464298, guid: 541a1766e02310a4fa22f65df3649ac2, type: 3}
   m_respownPosInside: {x: 136.5, y: 120.25}
   m_respownPosOutside: {x: 24.8, y: 22}
   m_speed: 0.03
   m_hpMax: 2
-  m_exp: 4
+  m_exp: 5
   m_damage: 10
   m_isFollow: 1
+  m_explosionPrefab: {fileID: -7877412462838464298, guid: 541a1766e02310a4fa22f65df3649ac2, type: 3}
+  m_gemPrefabs:
+  - {fileID: 359468351092614587, guid: 4c007555ebdecc04a877c10655b4ed0c, type: 3}
+  - {fileID: 7794725220091598102, guid: dad51eb54f2385d4f910a4af46375884, type: 3}
+  - {fileID: 847765511732678050, guid: f8624e0f3a1ffab45b92e016dfe82523, type: 3}
+  - {fileID: 7815263825185780257, guid: 7a02b84c128137545a4d96242664b379, type: 3}
+  m_dropRangeMin: 0.2
+  m_dropRangeMax: 1.15
 --- !u!50 &7795896924240867336
 Rigidbody2D:
   serializedVersion: 4
