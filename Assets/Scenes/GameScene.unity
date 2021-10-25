@@ -169,13 +169,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_shotPrefab: {fileID: 8311348636270045736, guid: f5f0148ba94f0564c853359d74d33e47, type: 3}
-  explodePrefab: {fileID: 0}
+  explodePrefab: {fileID: 3468869496901660373, guid: 541a1766e02310a4fa22f65df3649ac2, type: 3}
   m_speed: 0.3
   m_shotSpeed: 1.72
-  m_shotAngleRange: 20
+  m_shotAngleRange: 10
   m_shotTimer: 1
-  m_shotCount: 10
-  m_shotInterval: 0.5
+  m_shotCount: 5
+  m_shotInterval: 1
   m_hpMax: 2
   m_hp: 0
 --- !u!61 &299502721
@@ -552,7 +552,7 @@ MonoBehaviour:
   - {fileID: 5240162759776826024, guid: 483911b55e2dae1489d6f547ef530fca, type: 3}
   - {fileID: 8615897355412222181, guid: f19e276c238debc41994ab444bdc4f4d, type: 3}
   - {fileID: 5351990112407466171, guid: 2347189a6ee63f44584a6655dec199d3, type: 3}
-  m_interval: 1
+  m_interval: 5
 --- !u!4 &1729841694
 Transform:
   m_ObjectHideFlags: 0

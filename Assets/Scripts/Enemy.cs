@@ -33,8 +33,8 @@ namespace Asakuma
         private float m_setTimer = 0.05f;    //爆発タイマーの基準値
 
         public Gem[] m_gemPrefabs;
-        private float m_gemSpeedMin;
-        private float m_gemSpeedMax;
+        public float m_dropRangeMin;    //アイテムの広がる範囲
+        public float m_dropRangeMax;
 
         private void Start()
         {
@@ -43,7 +43,6 @@ namespace Asakuma
         private void Update()
         {
             m_explosionTimer -= Time.deltaTime;
-            Debug.Log(m_explosionTimer);
 
             if (m_isFollow)
             {
@@ -105,24 +104,28 @@ namespace Asakuma
 
             if (col.gameObject.tag == "Shot")
             {
+                Instantiate(m_explosionPrefab, col.transform.localPosition, Quaternion.identity);
+                Destroy(col.gameObject);
+
                 if (m_explosionTimer < 0)
                 {
-                    Instantiate(m_explosionPrefab, col.transform.localPosition, Quaternion.identity);
                     m_explosionTimer = m_setTimer;
                 }
+
                 m_hp--;
                 if (0 < m_hp) return;
 
                 Destroy(gameObject);
 
                 var exp = m_exp;
-                while (0 < exp)
+                while (1 < exp)
                 {
                     var gemPrefabs = m_gemPrefabs.Where(c => c.m_exp <= exp).ToArray();
                     var gemPrefab = gemPrefabs[Random.Range(0, gemPrefabs.Length)];
                     var gem = Instantiate(gemPrefab, transform.localPosition, Quaternion.identity);
-                    gem.Init(m_exp, m_gemSpeedMin, m_gemSpeedMax);
+                    gem.Init(m_exp, m_dropRangeMin, m_dropRangeMax);
                     exp -= gem.m_exp;
+                    Debug.Log(exp);
                 }
             }
 

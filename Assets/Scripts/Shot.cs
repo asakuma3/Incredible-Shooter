@@ -26,5 +26,13 @@ namespace Asakuma
 
             Destroy(gameObject, 2);
         }
+
+        //private void OnTriggerEnter2D(Collider2D col)
+        //{
+        //    if (col.gameObject.tag == "Enemy")
+        //    {
+        //        Destroy(gameObject);
+        //    }
+        //}
     }
 }
